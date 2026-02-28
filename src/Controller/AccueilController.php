@@ -1,0 +1,35 @@
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Attribute\Route;
+
+final class AccueilController extends AbstractController
+{
+    #[Route('/accueil', name: 'app_accueil')]
+    #[Route(path: '/bonjour/{prenom}', name: 'app_bonjour')]
+
+    
+    public function index(): Response
+    {
+        return $this->render('accueil/index.html.twig', [
+            'controller_name' => 'AccueilController',
+        ]);
+    }
+    
+    public function bonjour(string $prenom): Response
+    {
+    return new Response("<h1>Bonjour $prenom ! Bienvenue sur Symfony 7.4</h1>");
+    }  
+    #[Route(path: '/bonjour/{prenom}', name: 'app_bonjour')]
+            public function test(): Response
+    {
+        return $this->render('accueil/test.html.twig', [
+            'controller_name' => 'AccueilController',
+        ]);
+    }
+
+ 
+}
